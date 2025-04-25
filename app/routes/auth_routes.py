@@ -46,12 +46,10 @@ def login_get(request: Request):
 
 
 @router.post("/login", response_class=HTMLResponse)
-def login_post(
-    request: Request,
-    response: Response,
-    email: str = Form(...),
-    password: str = Form(...),
-    db: Session = Depends(get_db)
++ def login_post(request: Request,
+                 email: str = Form(...),
+                 password: str = Form(...),
+                 db: Session = Depends(get_db)
 ):
     user = db.query(User).filter(User.email == email).first()
     if not user or not verify_password(password, user.hashed_password):
@@ -86,14 +84,6 @@ def logout(response: Response):
     resp = RedirectResponse(url="/login", status_code=status.HTTP_302_FOUND)
     resp.delete_cookie("user_id")
     return resp
-
-@router.get("/admin/add-admin", response_class=HTMLResponse)
-def add_admin_get(request: Request):
-    """
-    Render a simple form where an existing admin can input an email
-    to grant new admin access.
-    """
-    return templates.TemplateResponse("add_admin.html", {"request": request})
 
 @router.get("/admin/add-admin", response_class=HTMLResponse)
 def add_admin_get(request: Request):

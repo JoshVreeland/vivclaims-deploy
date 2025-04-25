@@ -3,4 +3,8 @@ __pycache__/
 *.pyc
 finalized_pdfs/
 app/.env
+<<<<<<< HEAD
 .DS_Store
+=======
+app/.env
+>>>>>>> 80b308f (Remove homepage and default to /login)
