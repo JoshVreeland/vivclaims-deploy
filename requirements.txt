@@ -30,3 +30,6 @@ typing_extensions==4.13.2
 uvicorn==0.34.2
 webencodings==0.5.1
 zopfli==0.2.3.post1
+bcrypt==4.1.2
+passlib[bcrypt]==1.7.4
+
